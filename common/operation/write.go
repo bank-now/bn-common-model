@@ -1,6 +1,6 @@
 package operation
 
-type Write struct {
+type WriteOperation struct {
 	Table  string `json:"table"`
 	Method string `json:"method"`
 	Item   []byte `json:"item"`
