@@ -1,6 +1,8 @@
 package operation
 
+import "time"
+
 type InterestOperation struct {
-	Account string `json:"account"`
-	Ts      string `json:"ts"`
+	Account string    `json:"account"`
+	DateFor time.Time `json:"dateFor"`
 }
