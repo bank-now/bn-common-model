@@ -1,7 +1,6 @@
 package operation
 
 import (
-	"bytes"
 	"encoding/json"
 	"time"
 )
@@ -16,8 +15,7 @@ func (i *InterestOperation) ToJsonBytes() ([]byte, error) {
 }
 
 func GetInterestOperation(b []byte) (i *InterestOperation, err error) {
-	r := bytes.NewReader(b)
-	decoder := json.NewDecoder(r)
-	decoder.Decode(i)
+	err = json.Unmarshal(b, &i)
 	return
+
 }
