@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"sort"
 	"time"
 )
 
@@ -28,5 +29,12 @@ func GetTransactions(b []byte) (*[]Transaction, error) {
 	var items []Transaction
 	err := json.Unmarshal(b, &items)
 	return &items, err
+
+}
+
+func OrderTransactions(slice []Transaction) []Transaction {
+	sort.Slice(slice, func(i, j int) bool {
+		return slice[i].Timestamp.Before(slice[j].Timestamp)
+	})
 
 }
