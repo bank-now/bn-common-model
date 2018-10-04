@@ -25,8 +25,9 @@ func (i *InterestOperationV1) ToJsonBytes() ([]byte, error) {
 	return json.Marshal(i)
 }
 
-func GetInterestOperation(b []byte) (i *InterestOperationV1, err error) {
-	err = json.Unmarshal(b, i)
-	return
+func GetInterestOperation(b []byte) (*InterestOperationV1, error) {
+	var item InterestOperationV1
+	err := json.Unmarshal(b, &item)
+	return &item, err
 
 }
