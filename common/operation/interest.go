@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	InterestOperationV1Topic = "InterestOperationV1"
+	InterestOperationV1Topic = "interest-operation-v1"
 )
 
 type InterestOperationV1 struct {
