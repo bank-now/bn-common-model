@@ -5,16 +5,20 @@ import (
 	"time"
 )
 
-type InterestOperation struct {
+const (
+	InterestOperationV1Topic = "InterestOperationV1"
+)
+
+type InterestOperationV1 struct {
 	Account string    `json:"account"`
 	DateFor time.Time `json:"dateFor"`
 }
 
-func (i *InterestOperation) ToJsonBytes() ([]byte, error) {
+func (i *InterestOperationV1) ToJsonBytes() ([]byte, error) {
 	return json.Marshal(i)
 }
 
-func GetInterestOperation(b []byte) (i *InterestOperation, err error) {
+func GetInterestOperation(b []byte) (i *InterestOperationV1, err error) {
 	err = json.Unmarshal(b, i)
 	return
 
