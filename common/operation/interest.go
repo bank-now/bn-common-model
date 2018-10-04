@@ -15,7 +15,7 @@ func (i *InterestOperation) ToJsonBytes() ([]byte, error) {
 }
 
 func GetInterestOperation(b []byte) (i *InterestOperation, err error) {
-	err = json.Unmarshal(b, &i)
+	err = json.Unmarshal(b, i)
 	return
 
 }
