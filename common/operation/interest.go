@@ -9,6 +9,13 @@ const (
 	InterestOperationV1Topic = "interest-operation-v1"
 )
 
+func NewInterestOperationV1(account string) *InterestOperationV1 {
+	i := InterestOperationV1{
+		Account: account,
+		DateFor: time.Now()}
+	return &i
+}
+
 type InterestOperationV1 struct {
 	Account string    `json:"account"`
 	DateFor time.Time `json:"dateFor"`
