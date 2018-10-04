@@ -13,7 +13,7 @@ const (
 type Transaction struct {
 	ID         string    `json:"id"`
 	SystemCode string    `json:"sys_code"`
-	Amount     float32   `json:"amt"`
+	Amount     float64   `json:"amt"`
 	Timestamp  time.Time `json:"ts"`
 	AccountID  string    `json:"account_id"`
 }
