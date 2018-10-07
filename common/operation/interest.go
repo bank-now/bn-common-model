@@ -2,6 +2,7 @@ package operation
 
 import (
 	"encoding/json"
+	"github.com/google/uuid"
 	"time"
 )
 
@@ -13,6 +14,9 @@ func NewInterestOperationV1(account string) *InterestOperationV1 {
 	i := InterestOperationV1{
 		Account: account,
 		DateFor: time.Now()}
+
+	u, _ := uuid.NewRandom()
+	i.TraceId = u.String()
 	return &i
 }
 
