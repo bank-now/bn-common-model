@@ -17,6 +17,7 @@ func NewInterestOperationV1(account string) *InterestOperationV1 {
 }
 
 type InterestOperationV1 struct {
+	TraceId string    `json:"traceId"`
 	Account string    `json:"account"`
 	DateFor time.Time `json:"dateFor"`
 }
