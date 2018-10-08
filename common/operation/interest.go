@@ -2,16 +2,17 @@ package operation
 
 import (
 	"encoding/json"
+	"github.com/bank-now/bn-common-io/zipkin"
 	"github.com/google/uuid"
 	"time"
 )
 
 const (
-	InterestOperationV1Topic = "interest-operation-v1"
+	InterestOperationV2Topic = "interest-operation-v2"
 )
 
-func NewInterestOperationV1(account string) *InterestOperationV1 {
-	i := InterestOperationV1{
+func NewInterestOperationV2(account string) *InterestOperationV2 {
+	i := InterestOperationV2{
 		Account: account,
 		DateFor: time.Now()}
 
@@ -20,18 +21,19 @@ func NewInterestOperationV1(account string) *InterestOperationV1 {
 	return &i
 }
 
-type InterestOperationV1 struct {
-	TraceId string    `json:"traceId"`
-	Account string    `json:"account"`
-	DateFor time.Time `json:"dateFor"`
+type InterestOperationV2 struct {
+	TraceId string       `json:"traceId"`
+	Account string       `json:"account"`
+	DateFor time.Time    `json:"dateFor"`
+	Ghost   zipkin.Ghost `json:"ghost"`
 }
 
-func (i *InterestOperationV1) ToJsonBytes() ([]byte, error) {
+func (i *InterestOperationV2) ToJsonBytes() ([]byte, error) {
 	return json.Marshal(i)
 }
 
-func GetInterestOperation(b []byte) (*InterestOperationV1, error) {
-	var item InterestOperationV1
+func GetInterestOperation(b []byte) (*InterestOperationV2, error) {
+	var item InterestOperationV2
 	err := json.Unmarshal(b, &item)
 	return &item, err
 
